@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
+import {ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,7 @@ import { SharedModule } from './_modules/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { GlobalErrorInterceptor } from './Interceptors/global-error.interceptor';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,8 @@ import { GlobalErrorInterceptor } from './Interceptors/global-error.interceptor'
     MemberListComponent,
     MemberDetailComponent,
     ListsComponent,
-    MessagesComponent
+    MessagesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,8 @@ import { GlobalErrorInterceptor } from './Interceptors/global-error.interceptor'
     FormsModule,
     HttpClientModule,
     NgbModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
     
   ],
   providers: [

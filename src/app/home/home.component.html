@@ -3,7 +3,7 @@
         <h1>Find your match</h1>
         <p class="lead"> Come on in to view your matches... all you need to do is sign up!</p>
         <div class="text-center">
-            <button (click)="registerToggle()" class="btn btn-success btn-lg mr-2">Register</button>
+            <button type="button"  class="btn btn-success btn-lg mr-2 " data-bs-toggle="modal" data-bs-target="#SignupModal" data-bs-backdrop="static" data-bs-keyboard="false">Register</button>
             <button  class="btn btn-info btn-lg" style="margin:10px;">Learn More</button>
         </div>
     </div>
@@ -15,3 +15,19 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="SignupModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="signupoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- <div class="modal-header"> -->
+          <!-- <h5 class="modal-title panel-title" id="exampleModalLabel">Sign in</h5> -->
+          <!-- <button type="button" #myModalClose class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        <!-- </div> -->
+        
+        <div class="modal-body">
+          <app-register></app-register>
+        </div>
+      </div>
+    </div>
+  </div>

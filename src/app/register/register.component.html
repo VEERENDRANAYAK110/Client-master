@@ -1,9 +1,9 @@
-<form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
+<!-- <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
 <h2 class="text-center text-primary">Sign up</h2>
 <hr>
 <div class="form-group m">
     <input type="text" class="form-control" name="username"
-    [(ngModel)]="model.username" placeholder="User Name">
+    [(ngModel)]="model.username" placeholder="User Name" required="Enter your Username!">
 </div>
 <div class="form-group" style="margin-top:10px;">
     <input type="password" class="form-control" name="password"
@@ -11,6 +11,62 @@
 </div>
 <div class="form-group">
     <button class="btn btn-success mr-2" type="submit" >Register</button>
-    <button class="btn btn-danger" style="margin:10px;" (click)="cancel()" type="button" >cancel</button>
+    <button type="button" class="btn btn-danger mr-4 margin" #modal data-bs-dismiss="modal" type="submit" (click)="cancel()">Cancel</button>  
+     <button class="btn btn-danger" style="margin:10px;" (click)="cancel()" type="button" >cancel</button> 
 </div>
+</form> -->
+
+<form [formGroup]="registerForm">
+    <div class="form-group">       
+        <h5 class="modal-title panel-title" id="exampleModalLabel">Sign Up</h5>
+    <h6 style="text-align:right;color:dimgrey;font-size:small">All fields are mandatory</h6>
+    <hr>
+    <div class="container"> 
+    <input class="form-control me-2" [(ngModel)]="model.userName" formControlName="userName" type="text" placeholder="user Name">
+    <div style="text-align:left; padding-top:5px; color:red;">
+        <div *ngIf="registerForm.controls.userName.errors?.['required']">
+            <p>&nbsp;User Name is mandatory</p>
+        </div>
+        <div *ngIf="registerForm.controls.userName.errors?.['minlength']">
+            <p>&nbsp;User Name must be at least 8 characters long.</p>
+        </div>
+    </div>    
+    <input  name="password" minlength="8" formControlName="password" [(ngModel)]="model.password" class="form-control mt-2 me-2" type="password" placeholder="Password">
+    <div style="text-align:left; padding-top:5px; color:red;">
+        <div *ngIf="registerForm.controls.password.errors?.['required']">
+            <p>&nbsp;Password is mandatory</p>
+        </div>
+        <div *ngIf="registerForm.controls.password.errors?.['minlength']">
+            <p>&nbsp;Password must be at least 8 characters long.</p>
+        </div>
+        <div *ngIf="registerForm.controls.password.hasError('hasNumber')">
+            <p>&nbsp;Password must contain at least 1 Number.</p>
+        </div>
+        <div *ngIf="registerForm.controls.password.hasError('hasCapitalCase')">
+            <p>&nbsp;Password must contain at least 1 Upper Case Letter.</p>
+        </div>
+        <div *ngIf="registerForm.controls.password.hasError('hasSmallCase')">
+            <p>&nbsp;Password must contain at least 1 Lower Case Letter.</p>
+        </div>
+        <div *ngIf="registerForm.controls.password.hasError('hasSpecialCharacters')">
+            <p>&nbsp;Password must contain at least 1 Special Character.</p>
+        </div>
+    </div> 
+    <div style="text-align:left; padding-top:5px; color:red;">
+        <div *ngIf="RegistrationFailed">
+            <p>&nbsp;Username Already Exists!!</p>
+        </div>
+    </div> 
+    <button class="btn btn-success mt-2" [disabled]="!registerForm.valid"  type="submit" (click)="register()">Register</button>
+    <button type="button" class="btn btn-danger mt-2 margin" #modal data-bs-dismiss="modal" type="submit" (click)="cancel()">Close</button>  
+    </div>
+    </div>
 </form>
+    
+<form #registrationForm="ngForm" autocomplete="off">
+    
+    </form>
+    
+    
+    
+    

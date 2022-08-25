@@ -1,0 +1,24 @@
+<form #loginForm="ngForm" autocomplete="off">
+<h5 class="modal-title panel-title" id="exampleModalLabel">Sign in</h5>
+<h6 style="text-align:right;color:dimgrey;font-size:small">All fields are mandatory</h6>
+<hr>
+<div class="container"> 
+<input name="username" #emailRef="ngModel"  [(ngModel)]="model.username" class="form-control me-2" type="text" placeholder="Username" ngModel required="Enter Your Username!">
+<div style="text-align:left; padding-top:5px; color:red;">
+    <div *ngIf="emailRef.errors">
+        <p>&nbsp;User Name is mandatory</p>
+    </div>
+</div>    
+<input  name="password" #passwordRef="ngModel"  [(ngModel)]="model.password" class="form-control mt-2 me-2" type="password" placeholder="Password" ngmodel required="Enter Your Password!">
+<div style="text-align:left; padding-top:5px; color:red;">
+    <div *ngIf="passwordRef.errors">
+        <p>&nbsp;Password is mandatory</p>
+    </div>
+</div> 
+<button class="btn btn-success mt-2" [disabled]="!loginForm.form.valid"  type="submit" (click)="login()">Login</button>
+<button type="button" class="btn btn-danger mt-2 margin" #modal data-bs-dismiss="modal" type="submit" (click)="Closeclick()">Close</button>  
+</div>
+</form>
+
+
+
