@@ -1,23 +1,36 @@
-<form #loginForm="ngForm" autocomplete="off">
-<h5 class="modal-title panel-title" id="exampleModalLabel">Sign in</h5>
-<h6 style="text-align:right;color:dimgrey;font-size:small">All fields are mandatory</h6>
-<hr>
-<div class="container"> 
-<input name="username" #emailRef="ngModel"  [(ngModel)]="model.username" class="form-control me-2" type="text" placeholder="Username" ngModel required="Enter Your Username!">
-<div style="text-align:left; padding-top:5px; color:red;">
-    <div *ngIf="emailRef.errors">
-        <p>&nbsp;User Name is mandatory</p>
+<form [formGroup]="loginForm">
+    <div class="form-group">       
+        <h5 class="modal-title panel-title" id="exampleModalLabel">Log In</h5>
+    <h6 style="text-align:right;color:dimgrey;font-size:small">All fields are mandatory</h6>
+    <hr>
+    <div class="container"> 
+    <input class="form-control me-2" [(ngModel)]="model.userName" formControlName="userName" type="text" placeholder="Enter your UserName">
+    <div style="text-align:left; padding-top:5px; color:red;">
+        <div *ngIf="loginForm.controls.userName.errors?.['required']">
+            <p>&nbsp;User Name is mandatory</p>
+        </div>
+        <div *ngIf="loginForm.controls.userName.errors?.['minlength']">
+            <p>&nbsp;User Name must be at least 8 characters long.</p>
+        </div>
+    </div>    
+    <input  name="password" minlength="8" formControlName="password" [(ngModel)]="model.password" class="form-control mt-2 me-2" type="password" placeholder="Enter your Password">
+    <div style="text-align:left; padding-top:5px; color:red;">
+        <div *ngIf="loginForm.controls.password.errors?.['required']">
+            <p>&nbsp;Password is mandatory</p>
+        </div>
+        <div *ngIf="loginForm.controls.password.errors?.['minlength']">
+            <p>&nbsp;Password must be at least 8 characters long.</p>
+        </div>
+    </div> 
+    <div style="text-align:left; padding-top:5px; color:red;">
+        <div *ngIf="LoginFailed">
+            <p>&nbsp; Invalid Credentials!!</p>
+        </div>
+    </div> 
+    <button class="btn btn-success mt-2" [disabled]="!loginForm.valid"  type="submit" (click)="login()">Login</button>
+    <button type="button" class="btn btn-danger mt-2 margin" #modal data-bs-dismiss="modal" type="submit" (click)="Closeclick()">Close</button>  
     </div>
-</div>    
-<input  name="password" #passwordRef="ngModel"  [(ngModel)]="model.password" class="form-control mt-2 me-2" type="password" placeholder="Password" ngmodel required="Enter Your Password!">
-<div style="text-align:left; padding-top:5px; color:red;">
-    <div *ngIf="passwordRef.errors">
-        <p>&nbsp;Password is mandatory</p>
     </div>
-</div> 
-<button class="btn btn-success mt-2" [disabled]="!loginForm.form.valid"  type="submit" (click)="login()">Login</button>
-<button type="button" class="btn btn-danger mt-2 margin" #modal data-bs-dismiss="modal" type="submit" (click)="Closeclick()">Close</button>  
-</div>
 </form>
 
 

@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
             this.RegistrationFailed=false;
             this.modalClose.nativeElement.click();
             this.router.navigateByUrl('/members');
-            this.toastr.success("Registration Success!!",
+            this.toastr.success("Registration Successful!!",
               'Congratulations!!!!' , {
                 enableHtml: true,
                 closeButton: true,
@@ -73,6 +73,5 @@ export class RegisterComponent implements OnInit {
     this.model.username='';
     this.model.password='';
     this.RegistrationFailed=false;
-    this.cancelRegister.emit(false);
   }
 }

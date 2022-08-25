@@ -32,6 +32,12 @@ export class NavComponent implements OnInit {
 
   logout()
   {
+    this.toastr.error("Good Bye!!",
+              'Logged Out!!!!' , {
+                enableHtml: true,
+                closeButton: true,
+                timeOut: 3000
+            })
     this.accountServices.logout();
     this,this.router.navigateByUrl('/');
   }
