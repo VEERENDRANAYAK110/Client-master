@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/members');
         },
         error: error=>{
+          this.modalClose.nativeElement.click();
           this.LoginFailed=true;
         }
 

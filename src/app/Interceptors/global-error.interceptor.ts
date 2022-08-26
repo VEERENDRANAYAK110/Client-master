@@ -56,6 +56,15 @@ export class GlobalErrorInterceptor implements HttpInterceptor {
                   })
               break;
 
+              case 0:
+                  this.toastr.error('Some Error occurred at server connection!!',
+                    'Connection Failed!!' , {
+                      enableHtml: true,
+                      closeButton: true,
+                      timeOut: 6000
+                  })
+              break;
+
               case 404:
                   this.router.navigateByUrl('/not-found');
               break;
